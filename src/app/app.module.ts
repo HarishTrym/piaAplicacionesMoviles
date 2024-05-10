@@ -10,10 +10,11 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { LoginComponent } from './login/login.component';
 import { RecetarioComponent } from './recetario/recetario.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, AddRecipeComponent, LoginComponent, RecetarioComponent, SignUpComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

@@ -9,7 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 export class RecetarioComponent  implements OnInit {
 
   private activatedRoute = inject(ActivatedRoute);
-  constructor() { }
+
+  constructor() { } 
 
   ngOnInit() {}
 
