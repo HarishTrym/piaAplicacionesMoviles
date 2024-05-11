@@ -4,6 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { RecetarioComponent } from './recetario/recetario.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { NoIngresadoGuard } from './no-ingresado.guard';
+import { IngresadoGuard } from './ingresado.guard';
 
 const routes: Routes = [
   {
@@ -22,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [NoIngresadoGuard]
   },
   {
     path: '',
@@ -49,7 +52,13 @@ const routes: Routes = [
   },
   {
     path: 'sign-up',
-    component: SignUpComponent
+    component: SignUpComponent,
+    canActivate: [NoIngresadoGuard]
+  },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
+    canActivate: [IngresadoGuard]
   },
 ];
 

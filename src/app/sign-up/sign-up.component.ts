@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +14,7 @@ export class SignUpComponent  implements OnInit {
 
   formularioRegistro: FormGroup;
 
-  constructor(public fb: FormBuilder, public alertController: AlertController) { 
+  constructor(public fb: FormBuilder, public alertController: AlertController, public navCtrl: NavController) { 
 
     this.formularioRegistro = this.fb.group({
       "nombre": new FormControl("", Validators.required),
@@ -34,6 +34,17 @@ export class SignUpComponent  implements OnInit {
         message: 'Tienes que llenar todos los datos',
         buttons: ['Aceptar']
       });
+              
+      await alert.present();
+      return;
+    }
+
+    if(f.password != f.confirmacionPassword){
+      const alert = await this.alertController.create({
+        header: 'Contraseña incorrecta',
+        message: 'La contraseña y su confirmación son diferentes',
+        buttons: ['Aceptar']
+      });
     
       await alert.present();
       return;
@@ -45,5 +56,8 @@ export class SignUpComponent  implements OnInit {
     }
 
     localStorage.setItem('usuario',JSON.stringify(usuario));
+    localStorage.setItem('Ingresado', 'true');
+    this.navCtrl.navigateRoot('inicio');
+  
   }
 }

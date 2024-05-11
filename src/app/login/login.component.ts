@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent  implements OnInit {
   
   formularioLogin: FormGroup;
 
-  constructor(public fb: FormBuilder, public alertController: AlertController) { 
+  constructor(public fb: FormBuilder, public alertController: AlertController, public navCtrl: NavController) { 
 
     this.formularioLogin = this.fb.group({
       "nombre": new FormControl("", Validators.required),
@@ -32,11 +32,13 @@ export class LoginComponent  implements OnInit {
 
     if(usuario.nombre == f.nombre && usuario.password == f.password) {
       console.log("Ingresado");
+      localStorage.setItem('Ingresado', 'true');
+      this.navCtrl.navigateRoot('inicio');
     }
     else {
       const alert = await this.alertController.create({
-      header: 'Datos incompletos',
-      message: 'Tienes que llenar todos los datos',
+      header: 'Datos incorrectos',
+      message: 'Tienes que llenar todos los datos correctamente',
       buttons: ['Aceptar']
       })
       
