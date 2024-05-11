@@ -34,7 +34,8 @@ const routes: Routes = [
   },
   {
     path: 'add-recipe',
-    component: AddRecipeComponent
+    component: AddRecipeComponent,
+    canActivate: [IngresadoGuard]
   },
   {
     path: '',
@@ -43,7 +44,8 @@ const routes: Routes = [
   },
   {
     path: 'recetario',
-    component: RecetarioComponent
+    component: RecetarioComponent,
+    canActivate: [IngresadoGuard]
   },
   {
     path: '',
@@ -58,7 +60,6 @@ const routes: Routes = [
   {
     path: 'inicio',
     loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
-    canActivate: [IngresadoGuard]
   },
 ];
 
