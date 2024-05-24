@@ -26,3 +26,28 @@ ion-menu-button {
   #container a {
     text-decoration: none;
   }
+
+ion-card{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  border-radius: 10px;
+}
+
+ion-card-header{
+  text-align: center;
+  padding: 0 40px;
+  border-bottom: 0px solid silver;
+  font-size: 60px;
+  color: white;
+}
+
+div {
+  position: absolute !important;
+  top : 40% !important;
+  width: 300px !important;
+  height: 400px !important;
+  color: white !important;
+}

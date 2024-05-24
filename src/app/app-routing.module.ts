@@ -8,7 +8,7 @@ import { NoIngresadoGuard } from './no-ingresado.guard';
 import { IngresadoGuard } from './ingresado.guard';
 
 const routes: Routes = [
-  {
+ /* {
     path: '',
     redirectTo: 'folder/Inbox',
     pathMatch: 'full'
@@ -16,6 +16,15 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  },*/
+    {
+    path: '',
+    redirectTo: '/inicio',
+    pathMatch: 'full'
+  },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
   },
   {
     path: '',
@@ -57,10 +66,10 @@ const routes: Routes = [
     component: SignUpComponent,
     canActivate: [NoIngresadoGuard]
   },
-  {
+ /* {
     path: 'inicio',
     loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),
-  },
+  },*/
 ];
 
 @NgModule({

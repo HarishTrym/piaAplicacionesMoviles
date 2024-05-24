@@ -7,9 +7,19 @@
   </ion-toolbar>
 </ion-header>
 
-
   <ion-content>
+    <div *ngFor="let ListaCuenta of ListaCuentas">
+      <br>
+      {{ListaCuenta.nombre}}
+      <br>
+      {{ListaCuenta.contrasena}}
+      <br>
+    
+    </div>
     <ion-card>
+      <ion-card-header>
+        Login
+      </ion-card-header>
       <ion-card-content>
         <form [formGroup]="formularioLogin">
           <ion-item>
