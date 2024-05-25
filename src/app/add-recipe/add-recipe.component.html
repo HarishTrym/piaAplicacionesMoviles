@@ -9,12 +9,12 @@
 
 <ion-content>
 
-  <form [formGroup]="formularioAnadirReceta">
+  <form [formGroup]="formularioAnadirReceta" id="form">
     <ion-avatar *ngIf="formularioAnadirReceta.value.imagen">
       <img [src]="formularioAnadirReceta.value.imagen">
     </ion-avatar>
 
-    <ion-icon class="image-icon" *ngIf="formularioAnadirReceta.value.imagen" name="image-outline"></ion-icon>
+    <ion-icon class="image-icon" *ngIf="!formularioAnadirReceta.value.imagen" name="image-outline"></ion-icon>
     <ion-item>
       <ion-button (click)="takeImage()" mode="ios" size="small" shape="round">Capturar</ion-button>
     </ion-item>
@@ -32,6 +32,11 @@
       <ion-input formControlName="instrucciones"></ion-input>
     </ion-item>
     <br>
-  <ion-button expand="block" (click)="addRecipe()">Agregar Receta</ion-button>
+    <ng-container *ngIf="formularioAnadirReceta.valid">
+    <ion-button expand="block" type="reset" (click)="addRecipe()">Agregar Receta</ion-button>
+    </ng-container>
+    <ng-container *ngIf="!formularioAnadirReceta.valid">
+    <ion-button expand="block" (click)="addRecipe()">Agregar Receta</ion-button>
+    </ng-container>
 </form>
 </ion-content>

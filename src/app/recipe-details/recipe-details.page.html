@@ -6,12 +6,20 @@
 
 <ion-content>
   <ion-item>
-    <ion-label>Ingredientes</ion-label>
-    <ion-textarea readonly>{{ receta.ingredientes }}</ion-textarea>
+    <ion-label class="titulo">Ingredientes</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{ receta.ingredientes }}</ion-label>
   </ion-item>
 
   <ion-item>
-    <ion-label>Instrucciones</ion-label>
-    <ion-textarea readonly>{{ receta.instructiones }}</ion-textarea>
+    <ion-label class="titulo">Instrucciones</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{ receta.instrucciones }}</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <img [src]="receta.imagen">
   </ion-item>
 </ion-content>

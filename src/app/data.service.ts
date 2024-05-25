@@ -27,4 +27,9 @@ export class DataService {
   obtenerRecetas() {
     return this.afs.collection('/Receta').snapshotChanges();
   }
+
+  borrarReceta(receta: Receta){
+    console.log(receta.id);
+    return this.afs.doc('/Receta/'+receta.id).delete();
+  }
 }

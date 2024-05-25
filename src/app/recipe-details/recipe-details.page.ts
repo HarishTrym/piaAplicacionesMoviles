@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RecetaService } from 'src/services/receta.service';
+import { Receta } from '../model/receta';
 
 @Component({
   selector: 'app-recipe-details',
@@ -8,13 +8,22 @@ import { RecetaService } from 'src/services/receta.service';
   styleUrls: ['./recipe-details.page.scss'],
 })
 export class RecipeDetailsPage implements OnInit {
-  receta: any;
+  receta : Receta = {
+    id: '',
+    nombre: '',
+    ingredientes: '',
+    instrucciones: '',
+    imagen: '',
+    usuario: '',
+  };
 
-  constructor(private route: ActivatedRoute, private recetaService: RecetaService) {}
+  constructor(private route: ActivatedRoute) {}
   
   ngOnInit() {
-    const recetaId = this.route.snapshot.paramMap.get('id');
-    this.receta = this.recetaService.getRecipes();
+    this.receta.nombre = localStorage.getItem('nombre') ;
+    this.receta.ingredientes = localStorage.getItem('ingredientes') ;
+    this.receta.instrucciones = localStorage.getItem('instrucciones') ;
+    this.receta.imagen = localStorage.getItem('imagen') ;
   }
 
 }

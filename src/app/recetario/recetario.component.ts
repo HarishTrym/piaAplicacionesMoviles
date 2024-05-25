@@ -4,6 +4,7 @@ import { RecetaService } from 'src/services/receta.service';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { Receta } from '../model/receta';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-recetario',
@@ -17,12 +18,20 @@ export class RecetarioComponent  implements OnInit {
   Usuario = localStorage.getItem('Usuario');
 
   //constructor(private recetaService: RecetaService) { } 
-  constructor(private router: Router, private recetaService: RecetaService, private data: DataService) {}
+  constructor(private router: Router, private recetaService: RecetaService, private data: DataService, private navCtrl: NavController) {}
 
   viewRecipe(receta: any) {
-    this.router.navigate(['/recipe-details', receta.id]);
+    console.log('Hola');
+    localStorage.setItem('nombre', receta.nombre);
+    localStorage.setItem('ingredientes', receta.ingredientes);
+    localStorage.setItem('instrucciones', receta.instrucciones);
+    localStorage.setItem('imagen', receta.imagen) 
+    this.navCtrl.navigateRoot('recipe-details');
   }
 
+  hola(){
+    console.log('Hola');
+  }
   ngOnInit() {
     console.log('Hola');
     this.ObtenerRecetas();
@@ -41,6 +50,12 @@ export class RecetarioComponent  implements OnInit {
     }, err => {
       alert('Error while fetching the data');
     })
+  }
+
+  BorrarReceta(receta: Receta){
+    if(window.confirm('¿Estas seguro de querer borrar esta receta?')){
+      this.data.borrarReceta(receta);
+    }
   }
   
 }
