@@ -60,8 +60,10 @@ export class LoginComponent  implements OnInit {
   async ingresar(){
     var f = this.formularioLogin.value;
 
-    console.log(this.ListaCuentas.findIndex(e => e.contrasena === f.password));
- 
+    this.ListaCuentas.forEach(element => {if(element.nombre === f.nombre && element.contrasena === f.password){
+      console.log(element.nombre)
+  }});
+    
     if(this.ListaCuentas.findIndex(e => e.nombre === f.nombre) === this.ListaCuentas.findIndex(e => e.contrasena === f.password)) {
       localStorage.setItem('Ingresado', 'true');
       localStorage.setItem('Usuario', f.nombre);

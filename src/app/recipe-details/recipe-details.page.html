@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ receta.nombre }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Ingredientes</ion-label>
+    <ion-textarea readonly>{{ receta.ingredientes }}</ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Instrucciones</ion-label>
+    <ion-textarea readonly>{{ receta.instructiones }}</ion-textarea>
+  </ion-item>
+</ion-content>

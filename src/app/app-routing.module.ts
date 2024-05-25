@@ -76,6 +76,10 @@ const routes: Routes = [
     component: CuentaComponent,
     canActivate: [IngresadoGuard]
   },
+  {
+    path: 'recipe-details',
+    loadChildren: () => import('./recipe-details/recipe-details.module').then( m => m.RecipeDetailsPageModule)
+  },
  /* {
     path: 'inicio',
     loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule),

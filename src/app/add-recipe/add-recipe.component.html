@@ -8,23 +8,30 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-button (click)="takeImage()">Capturar</ion-button>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Nombre de la receta</ion-label>
-    <ion-input [(ngModel)]="receta.nombre"></ion-input>
-  </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Ingredientes</ion-label>
-    <ion-textarea rows="5" [(ngModel)]="receta.ingredientes"></ion-textarea>
-  </ion-item>
+  <form [formGroup]="formularioAnadirReceta">
+    <ion-avatar *ngIf="formularioAnadirReceta.value.imagen">
+      <img [src]="formularioAnadirReceta.value.imagen">
+    </ion-avatar>
 
-  <ion-item>
-    <ion-label position="floating">Instrucciones</ion-label>
-    <ion-textarea rows="5" [(ngModel)]="receta.instrucciones"></ion-textarea>
-  </ion-item>
+    <ion-icon class="image-icon" *ngIf="formularioAnadirReceta.value.imagen" name="image-outline"></ion-icon>
+    <ion-item>
+      <ion-button (click)="takeImage()" mode="ios" size="small" shape="round">Capturar</ion-button>
+    </ion-item>
 
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Ingredientes</ion-label>
+      <ion-input formControlName="ingredientes"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Instrucciones</ion-label>
+      <ion-input formControlName="instrucciones"></ion-input>
+    </ion-item>
+    <br>
   <ion-button expand="block" (click)="addRecipe()">Agregar Receta</ion-button>
+</form>
 </ion-content>
