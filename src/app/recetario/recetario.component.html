@@ -6,3 +6,11 @@
     <ion-title>Recetario</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let receta of recetas">
+      <ion-label>{{receta.nombre}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

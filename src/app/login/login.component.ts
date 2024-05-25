@@ -65,7 +65,7 @@ export class LoginComponent  implements OnInit {
     if(this.ListaCuentas.findIndex(e => e.nombre === f.nombre) === this.ListaCuentas.findIndex(e => e.contrasena === f.password)) {
       localStorage.setItem('Ingresado', 'true');
       localStorage.setItem('Usuario', f.nombre);
-      this.navCtrl.navigateRoot('inicio');
+      this.navCtrl.navigateRoot('cuenta');
     }
     else {
       const alert = await this.alertController.create({

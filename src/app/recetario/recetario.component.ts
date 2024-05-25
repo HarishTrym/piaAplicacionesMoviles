@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { RecetaService } from 'src/services/receta.service';
 
 @Component({
   selector: 'app-recetario',
@@ -9,9 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 export class RecetarioComponent  implements OnInit {
 
   private activatedRoute = inject(ActivatedRoute);
+  recetas: any[] = [];
 
-  constructor() { } 
+  constructor(private recetaService: RecetaService) { } 
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.recetas = this.recetaService.getRecipes();
+  }
 
 }

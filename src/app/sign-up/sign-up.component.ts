@@ -13,6 +13,12 @@ import { DataService } from '../data.service';
 })
 export class SignUpComponent  implements OnInit {
 
+  ListaCuentas: Cuenta[] = [];
+  CuentaObj : Cuenta = {
+    id: '',
+    nombre: '',
+    contrasena: ''
+  }
 
   nombreGet:any
   contraseñaGet:any
@@ -22,7 +28,7 @@ export class SignUpComponent  implements OnInit {
 
   formularioRegistro: FormGroup;
 
-  constructor(public fb: FormBuilder, public alertController: AlertController, public navCtrl: NavController, private FireService: FirestoreServiceService) { 
+  constructor(public fb: FormBuilder, public alertController: AlertController, public navCtrl: NavController, private FireService: FirestoreServiceService, private data: DataService) { 
 
     this.formularioRegistro = this.fb.group({
       "nombre": new FormControl("", Validators.required),
@@ -31,12 +37,26 @@ export class SignUpComponent  implements OnInit {
     })
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ObtenerCuentas();    
+  }
+
+  ObtenerCuentas() {
+    this.data.obtenerCuentas().subscribe(res => {
+      this.ListaCuentas = res.map((e: any) => {
+        const data = e.payload.doc.data();
+        data.id = e.payload.doc.id;
+        return data;
+      })
+    }, err => {
+      alert('Error while fetching the data');
+    })
+  }
 
 
   async agregarData(){
-    this.nombreGet = this.formularioRegistro.value.nombre
-    this.contraseñaGet = this.formularioRegistro.value.password
+    this.CuentaObj.nombre = this.formularioRegistro.value.nombre
+    this.CuentaObj.contrasena = this.formularioRegistro.value.password
   }
 
   
@@ -65,16 +85,27 @@ export class SignUpComponent  implements OnInit {
       await alert.present();
       return;
     }
+
+    if(this.ListaCuentas.some(e => e.nombre === f.nombre)){
+      const alert = await this.alertController.create({
+        header: 'Nombre ya en uso',
+        message: 'El nombre está actualmente en uso',
+        buttons: ['Aceptar']
+      });
+    
+      await alert.present();
+      return;
+    }
   }
 
   createData(){
     var f = this.formularioRegistro.value;
-    if(this.formularioRegistro.invalid || f.password != f.confirmacionPassword){
+    if(this.formularioRegistro.invalid || f.password != f.confirmacionPassword || this.ListaCuentas.some(e => e.nombre === f.nombre)){
       this.alertas();
     }
     else{
       this.agregarData();
-      this.FireService.guardarDatosRegistro(this.nombreGet, this.contraseñaGet);
+      this.data.añadirCuenta(this.CuentaObj);
     }
   }
 }

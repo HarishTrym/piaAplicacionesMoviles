@@ -6,6 +6,7 @@ import { RecetarioComponent } from './recetario/recetario.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NoIngresadoGuard } from './no-ingresado.guard';
 import { IngresadoGuard } from './ingresado.guard';
+import { CuentaComponent } from './cuenta/cuenta.component';
 
 const routes: Routes = [
  /* {
@@ -64,7 +65,16 @@ const routes: Routes = [
   {
     path: 'sign-up',
     component: SignUpComponent,
-    canActivate: [NoIngresadoGuard]
+  },
+  {
+    path: '',
+    redirectTo: 'cuenta',
+    pathMatch: 'full'
+  },
+  {
+    path: 'cuenta',
+    component: CuentaComponent,
+    canActivate: [IngresadoGuard]
   },
  /* {
     path: 'inicio',

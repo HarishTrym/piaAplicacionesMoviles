@@ -12,11 +12,12 @@ export class FirestoreServiceService {
   constructor(private FireStore: Firestore) { }
 
 
-  async guardarDatosRegistro(nombre: any, contraseña: any){
+  async guardarDatosRegistro(nombre: any, contraseña: any, id: any){
 
     let obj = {
-      "Nombre": nombre,
-      "Contraseña": contraseña,
+      "nombre": nombre,
+      "contraseña": contraseña,
+      "id": id,
     };
 
     const ref = collection(this.FireStore, 'Cuenta');

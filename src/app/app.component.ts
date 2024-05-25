@@ -11,6 +11,7 @@ export class AppComponent {
     { title: 'Añadir Receta', url: '/add-recipe', icon: 'add'},
     { title: 'Registro', url: '/sign-up', icon: 'person-add' },
     { title: 'Iniciar Sesión', url: '/login', icon: 'log-in' },
+    { title: 'Cuenta', url: '/cuenta', icon: 'person' },
    /* { title: 'Archived', url: '/folder/archived', icon: 'archive' },
     { title: 'Trash', url: '/folder/trash', icon: 'trash' },
     { title: 'Spam', url: '/folder/spam', icon: 'warning' },*/

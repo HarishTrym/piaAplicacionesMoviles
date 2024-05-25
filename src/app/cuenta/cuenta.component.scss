@@ -27,12 +27,20 @@ ion-menu-button {
     text-decoration: none;
   }
 
+  ion-img{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 400px;
+    height: 400px;
+  }
+
   ion-card{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -60%);
-    width: 400px;
+    width: 700px;
     border-radius: 10px;
   }
   
@@ -46,11 +54,12 @@ ion-menu-button {
   
   ion-button{
     position: relative !important;
-    transform: translate(90%, 0%);
+    transform: translate(160%, 0%);
     //width: 50px !important;
     height: 40px !important;
   }
-  
-  .save{
-    transform: translate(-30%, 0%);
+
+  ion-label{
+    text-align: center;
+    font-size: 40px !important;
   }

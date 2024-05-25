@@ -38,16 +38,20 @@ ion-card{
 
 ion-card-header{
   text-align: center;
-  padding: 0 40px;
-  border-bottom: 0px solid silver;
+  padding: 20px 0 20px;
+  border-bottom: 1px solid #38393b;
   font-size: 60px;
   color: white;
+
 }
 
-div {
-  position: absolute !important;
-  top : 40% !important;
-  width: 300px !important;
-  height: 400px !important;
-  color: white !important;
+ion-button{
+  position: relative !important;
+  transform: translate(90%, 0%);
+  //width: 50px !important;
+  height: 40px !important;
+}
+
+.save{
+  transform: translate(-30%, 0%);
 }

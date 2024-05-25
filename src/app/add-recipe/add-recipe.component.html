@@ -6,3 +6,25 @@
     <ion-title>Añadir Receta</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-button (click)="takeImage()">Capturar</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre de la receta</ion-label>
+    <ion-input [(ngModel)]="receta.nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Ingredientes</ion-label>
+    <ion-textarea rows="5" [(ngModel)]="receta.ingredientes"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Instrucciones</ion-label>
+    <ion-textarea rows="5" [(ngModel)]="receta.instrucciones"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="block" (click)="addRecipe()">Agregar Receta</ion-button>
+</ion-content>
