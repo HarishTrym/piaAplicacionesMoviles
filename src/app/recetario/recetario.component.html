@@ -3,14 +3,16 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Recetario</ion-title>
+    <ion-title>Recetario </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let receta of recetas">
+    <ng-container *ngFor="let receta of ListaRecetas" >
+    <ion-item *ngIf="receta.usuario == Usuario">
       <ion-label>{{receta.nombre}}</ion-label>
     </ion-item>
+  </ng-container>
   </ion-list>
 </ion-content>

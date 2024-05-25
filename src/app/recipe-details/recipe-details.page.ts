@@ -14,7 +14,7 @@ export class RecipeDetailsPage implements OnInit {
   
   ngOnInit() {
     const recetaId = this.route.snapshot.paramMap.get('id');
-   // this.receta = this.recetaService.getRecipeById(recetaId);
+    this.receta = this.recetaService.getRecipes();
   }
 
 }
